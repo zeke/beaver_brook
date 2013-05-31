@@ -19,7 +19,7 @@ module.exports = (grunt) ->
           'dist/index.js': ['src/scripts/**/*.coffee']
 
     watch:
-      app:
+      coffee:
         files: ['src/scripts/**/*.coffee']
         tasks: ['coffee']
       sass:
@@ -29,6 +29,7 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-contrib-compass'
   grunt.loadNpmTasks 'grunt-contrib-watch'
+grunt.loadNpmTasks('grunt-s3');
 
   # Default task
   grunt.registerTask 'default', ['compass', 'coffee']
