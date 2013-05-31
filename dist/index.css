@@ -1,0 +1,35 @@
+/* line 66, ../src/styles/index.sass */
+body { font-family: "Helvetica Neue", helvetica, arial; margin: 0; padding: 0; background: #dddddd; }
+
+/* line 72, ../src/styles/index.sass */
+hgroup { position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); background: transparent url(../images/beaverbrook_logo.png) no-repeat center top; padding-top: 90px; }
+/* line 76, ../src/styles/index.sass */
+hgroup h1, hgroup h2 { text-align: center; }
+/* line 79, ../src/styles/index.sass */
+hgroup h1 { margin: 0; padding: 0; }
+/* line 83, ../src/styles/index.sass */
+hgroup h2 { color: #999999; font-size: 18px; margin: 0; padding: 0; }
+
+/* line 89, ../src/styles/index.sass */
+h3.tip { position: absolute; bottom: 0; left: 50%; -webkit-transform: translate(-50%, -100%); transform: translate(-50%, -100%); font-size: 16px; font-weight: normal; color: #999999; }
+
+/* line 96, ../src/styles/index.sass */
+ol#slides { margin: 0; padding: 0; list-style: none; -webkit-transition: all 0.5s; -moz-transition: all 0.5s; -ms-transition: all 0.5s; -o-transition: all 0.5s; transition: all 0.5s; }
+/* line 102, ../src/styles/index.sass */
+ol#slides > li { margin: 0; padding: 0; height: 100%; width: 100%; position: relative; }
+/* line 109, ../src/styles/index.sass */
+ol#slides > li > h1 { position: absolute; top: 50%; left: 0; -webkit-transform: translate(0, -50%); transform: translate(0, -50%); max-width: 700px; font-size: 80px; margin: 0; padding: 0 0 0 30px; }
+/* line 116, ../src/styles/index.sass */
+ol#slides > li figure { width: 90%; height: 100%; margin: 0; padding: 0; position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); }
+/* line 122, ../src/styles/index.sass */
+ol#slides > li figure a { color: white; }
+/* line 124, ../src/styles/index.sass */
+ol#slides > li figure img { position: absolute; top: 50%; right: 0; -webkit-transform: translate(0, -50%); transform: translate(0, -50%); max-width: 70%; max-height: 70%; -webkit-transition: all 2s; -moz-transition: all 2s; -ms-transition: all 2s; -o-transition: all 2s; transition: all 2s; border: 10px solid white; }
+/* line 131, ../src/styles/index.sass */
+ol#slides > li figure img.borderless { border-color: transparent; }
+/* line 136, ../src/styles/index.sass */
+ol#slides > li figure figcaption { color: #999999; font-weight: bold; font-size: 32px; max-width: 400px; position: absolute; top: 50%; left: 0; -webkit-transform: translate(0, -50%); transform: translate(0, -50%); }
+/* line 143, ../src/styles/index.sass */
+ol#slides > li figure figcaption a { color: #666666; text-decoration: none; }
+/* line 146, ../src/styles/index.sass */
+ol#slides > li figure figcaption a:hover { color: #333333; text-decoration: underline; }

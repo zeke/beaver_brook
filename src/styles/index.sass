@@ -1,0 +1,152 @@
+// Config
+// --------------------------------------------------------------
+
+$background_color: #DDD
+$text_color: #999
+$image_border_color: white
+
+// Mixins
+// --------------------------------------------------------------
+
+=fonty
+  font-family: "Helvetica Neue", helvetica, arial
+
+=centered
+  position: absolute
+  top: 50%
+  left: 50%
+  -webkit-transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%)
+
+=centered_left
+  position: absolute
+  top: 50%
+  left: 0
+  -webkit-transform: translate(0, -50%)
+  transform: translate(0, -50%)
+
+=centered_right
+  position: absolute
+  top: 50%
+  right: 0
+  -webkit-transform: translate(0, -50%)
+  transform: translate(0, -50%)
+
+=centered_bottom
+  position: absolute
+  bottom: 0
+  left: 50%
+  -webkit-transform: translate(-50%, -100%)
+  transform: translate(-50%, -100%)
+
+=desaturated
+  -webkit-filter: grayscale(100%)// contrast(200%)
+  -moz-filter: grayscale(100%)
+  -ms-filter: grayscale(100%)
+  -o-filter: grayscale(100%)
+  filter: grayscale(100%)
+
+=saturated
+  -webkit-filter: none
+  -moz-filter: none
+  -ms-filter: none
+  -o-filter: none
+  filter: none
+
+=transition($duration)
+  -webkit-transition: all $duration
+  -moz-transition: all $duration
+  -ms-transition: all $duration
+  -o-transition: all $duration
+  transition: all $duration
+
+// Styles
+// --------------------------------------------------------------
+
+body
+  +fonty
+  margin: 0
+  padding: 0
+  background: $background_color
+
+hgroup
+  +centered
+  background: transparent url(../images/beaverbrook_logo.png) no-repeat center top
+  padding-top: 90px
+  h1, h2
+    text-align: center
+
+  h1
+    margin: 0
+    padding: 0
+
+  h2
+    color: #999
+    font-size: 18px
+    margin: 0
+    padding: 0
+
+h3.tip
+  +centered_bottom
+  font-size: 16px
+  font-weight: normal
+  color: #999
+
+
+ol#slides
+  margin: 0
+  padding: 0
+  list-style: none
+  +transition(0.5s)
+
+  > li
+    margin: 0
+    padding: 0
+    height: 100%
+    width: 100%
+    position: relative
+
+    > h1
+      +centered_left
+      max-width: 700px
+      font-size: 80px
+      margin: 0
+      padding: 0 0 0 30px
+
+    figure
+      width: 90%
+      height: 100%
+      margin: 0
+      padding: 0
+      +centered
+      a
+        color: $image_border_color
+      img
+        +centered_right
+        max-width: 70%
+        max-height: 70%
+        //+desaturated
+        +transition(2s)
+        border: 10px solid $image_border_color
+        &.borderless
+          border-color: transparent
+        //&:hover
+        //  +saturated
+
+      figcaption
+        color: $text_color
+        font-weight: bold
+        font-size: 32px
+        max-width: 400px
+        +centered_left
+
+        a
+          color: #666
+          text-decoration: none
+          &:hover
+            color: #333
+            text-decoration: underline
+
+
+
+
