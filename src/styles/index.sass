@@ -1,59 +1,24 @@
-// Config
-// --------------------------------------------------------------
+@import "media-queries"
+@import "mixins"
 
 $background_color: #DDD
 $text_color: #999
 $image_border_color: white
-$slide_padding: 30px
+$link_color: #666
+$link_hover_color: #333
 
-// Mixins
-// --------------------------------------------------------------
+$desktop_slide_padding: 30px
+$desktop_heading_size: 80px
+$desktop_text_size: 32px
+
+$mobile_heading_size: 32px
+$mobile_text_size: 18px
+$mobile_slide_padding: 20px
 
 *
   -moz-box-sizing: border-box
   -webkit-box-sizing: border-box
   box-sizing: border-box
-
-=fonty
-  font-family: "Helvetica Neue", helvetica, arial
-
-=centered
-  position: absolute
-  top: 50%
-  left: 50%
-  -webkit-transform: translate(-50%, -50%)
-  transform: translate(-50%, -50%)
-
-=centered_left($padding:0px)
-  position: absolute
-  top: 50%
-  left: $padding
-  -webkit-transform: translate(0, -50%)
-  transform: translate(0, -50%)
-
-=centered_right($padding:0px)
-  position: absolute
-  top: 50%
-  right: $padding
-  -webkit-transform: translate(0, -50%)
-  transform: translate(0, -50%)
-
-=centered_bottom($padding:0px)
-  position: absolute
-  bottom: $padding
-  left: 50%
-  -webkit-transform: translate(-50%, -100%)
-  transform: translate(-50%, -100%)
-
-=transition($duration)
-  -webkit-transition: all $duration
-  -moz-transition: all $duration
-  -ms-transition: all $duration
-  -o-transition: all $duration
-  transition: all $duration
-
-// Styles
-// --------------------------------------------------------------
 
 body
   +fonty
@@ -65,6 +30,10 @@ hgroup
   +centered
   background: transparent url(../images/beaverbrook_logo.png) no-repeat center top
   padding-top: 90px
+  +mobile-only
+    +not_centered
+    margin: 80px 0
+
   h1, h2
     text-align: center
 
@@ -73,7 +42,7 @@ hgroup
     padding: 0
 
   h2
-    color: #999
+    color: $text_color
     font-size: 18px
     margin: 0
     padding: 0
@@ -82,10 +51,11 @@ h3.tip
   +centered_bottom
   font-size: 16px
   font-weight: normal
-  color: #999
+  color: $text_color
   margin: 0
   padding: 0
-
+  +mobile-only
+    display: none
 
 ol#slides
   margin: 0
@@ -99,48 +69,60 @@ ol#slides
     height: 100%
     width: 100%
     position: relative
-
-    &:first-child
-      //background: transparent url(../images/beaverbrook_background.jpg) no-repeat center bottom
+    +mobile-only
+      width: auto
+      height: auto
 
     > h1
       +centered_left
       max-width: 700px
-      font-size: 80px
+      font-size: $desktop_heading_size
       margin: 0
-      padding: 0 0 0 $slide_padding
+      padding: 0 0 0 $desktop_slide_padding
+      +mobile-only
+        +not_centered
+        font-size: $mobile_heading_size
+        padding: 60px $mobile_slide_padding 0 $mobile_slide_padding
 
     figure
       width: 100%
       height: 100%
       margin: 0
-      padding: 50px
-      +centered
+      padding: 0
+      +mobile-only
+        width: auto
+        height: auto
+
       a
         color: $image_border_color
       img
-        +centered_right($slide_padding)
-        max-width: 70%
-        max-height: 70%
-        +transition(2s)
+        +centered_right($desktop_slide_padding)
+        +max_scale(70%)
         border: 10px solid $image_border_color
         &.borderless
           border-color: transparent
+        +mobile-only
+          +not_centered
+          +max_scale(100%)
+          border: none
 
       figcaption
         color: $text_color
         font-weight: bold
-        font-size: 32px
+        font-size: $desktop_text_size
         max-width: 400px
-        +centered_left($slide_padding)
+        +centered_left($desktop_slide_padding)
+        +mobile-only
+          +not_centered
+          max-width: none
+          font-size: $mobile_text_size
+          padding: $mobile_slide_padding
 
         a
-          color: #666
+          color: $link_color
           text-decoration: none
           &:hover
-            color: #333
+            color: $link_hover_color
             text-decoration: underline
-
-
 
 
