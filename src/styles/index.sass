@@ -4,9 +4,15 @@
 $background_color: #DDD
 $text_color: #999
 $image_border_color: white
+$slide_padding: 30px
 
 // Mixins
 // --------------------------------------------------------------
+
+*
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+  box-sizing: border-box
 
 =fonty
   font-family: "Helvetica Neue", helvetica, arial
@@ -18,40 +24,26 @@ $image_border_color: white
   -webkit-transform: translate(-50%, -50%)
   transform: translate(-50%, -50%)
 
-=centered_left
+=centered_left($padding:0px)
   position: absolute
   top: 50%
-  left: 0
+  left: $padding
   -webkit-transform: translate(0, -50%)
   transform: translate(0, -50%)
 
-=centered_right
+=centered_right($padding:0px)
   position: absolute
   top: 50%
-  right: 0
+  right: $padding
   -webkit-transform: translate(0, -50%)
   transform: translate(0, -50%)
 
-=centered_bottom
+=centered_bottom($padding:0px)
   position: absolute
-  bottom: 0
+  bottom: $padding
   left: 50%
   -webkit-transform: translate(-50%, -100%)
   transform: translate(-50%, -100%)
-
-=desaturated
-  -webkit-filter: grayscale(100%)// contrast(200%)
-  -moz-filter: grayscale(100%)
-  -ms-filter: grayscale(100%)
-  -o-filter: grayscale(100%)
-  filter: grayscale(100%)
-
-=saturated
-  -webkit-filter: none
-  -moz-filter: none
-  -ms-filter: none
-  -o-filter: none
-  filter: none
 
 =transition($duration)
   -webkit-transition: all $duration
@@ -91,6 +83,8 @@ h3.tip
   font-size: 16px
   font-weight: normal
   color: #999
+  margin: 0
+  padding: 0
 
 
 ol#slides
@@ -106,39 +100,39 @@ ol#slides
     width: 100%
     position: relative
 
+    &:first-child
+      //background: transparent url(../images/beaverbrook_background.jpg) no-repeat center bottom
+
     > h1
       +centered_left
       max-width: 700px
       font-size: 80px
       margin: 0
-      padding: 0 0 0 30px
+      padding: 0 0 0 $slide_padding
 
     figure
-      width: 90%
+      width: 100%
       height: 100%
       margin: 0
-      padding: 0
+      padding: 50px
       +centered
       a
         color: $image_border_color
       img
-        +centered_right
+        +centered_right($slide_padding)
         max-width: 70%
         max-height: 70%
-        //+desaturated
         +transition(2s)
         border: 10px solid $image_border_color
         &.borderless
           border-color: transparent
-        //&:hover
-        //  +saturated
 
       figcaption
         color: $text_color
         font-weight: bold
         font-size: 32px
         max-width: 400px
-        +centered_left
+        +centered_left($slide_padding)
 
         a
           color: #666
