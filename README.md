@@ -1,18 +1,16 @@
-Hi, I'm Zeke. I'm a designer and software developer living in San Francisco. I love building things.
+# Beaver Brook
 
-## What is your interest in Beaver Brook School?
+Source code for [beaver.zeke.sikelianos.com](http://beaver.zeke.sikelianos.com).
 
-I come from a creative family: Many of my siblings, cousins, parents, aunts, uncles, an
+## Develop
 
-## What is something you’ve made?
+```
+npm install
+grunt watch
+```
 
-## What skills could you contribute to this project?
+## Deploy
 
-## Which skills do you want to learn at Beaver Brook?
-
-## What’s a building you’d like to make that you haven’t?
-
-## If civilization ended, what role would you play in the New Dawn?
-
-Open Source Farm Equipment
-
+```
+grunt s3
+```

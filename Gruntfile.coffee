@@ -1,30 +1,38 @@
 module.exports = (grunt) ->
 
-  # Project configuration
   grunt.initConfig
 
-    # s3:
-    #   options:
-    #     key: "1NXMHSQFT0F16WRSJSR2"
-    #     secret: "1y7pu8AEueQkRhbWAUdjHxA+3sL/ppFnO5dMka7m"
-    #     bucket: "beaver-brook"
-    #     access: "public-read"
+    aws: grunt.file.readJSON("aws.json")
+    s3:
+      options:
+        key: "<%= aws.key %>"
+        secret: "<%= aws.secret %>"
+        bucket: "beaver.zeke.sikelianos.com"
+        access: "public-read"
 
-    #   dev:
-    #     upload: [
-    #       src: "dist/index.html"
-    #       dest: "index.html"
-    #       ,
-    #       src: "dist/scripts/*"
-    #       dest: "scripts/"
-    #     ]
+      dev:
+        upload: [
+          src: "dist/index.html"
+          dest: "index.html"
+        ,
+          src: "dist/images/*"
+          dest: "images/"
+        ,
+          src: "dist/scripts/*"
+          dest: "scripts/"
+        ,
+          src: "dist/styles/*"
+          dest: "styles/"
+        ]
 
     compass:
       dist:
         options:
-          config: 'compass.rb'
           sassDir: 'src/styles'
           cssDir: 'dist/styles'
+          outputStyle: 'compact'
+          relativeAssets: true
+          colorOutput: false
 
     coffee:
       app:
@@ -47,5 +55,4 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-s3'
 
-  # Default task
   grunt.registerTask 'default', ['compass', 'coffee']
