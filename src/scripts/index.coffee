@@ -2,37 +2,37 @@ class Carousel
 
   constructor: (@selector) ->
 
-    @slide_count = $(@selector).length
-
+    # Number of immediate children
+    @slide_count = document.querySelectorAll("#{@selector} > *").length
 
     $('body').on 'keydown', (event) =>
+      @next() if event.keyCode in [39, 40] # right or down
+      @prev() if event.keyCode in [37, 38] # left or up
 
-      # Estimate which slide is nearest based on current window scroll position
-      @slide_offset = parseInt(document.body.scrollTop/window.innerHeight)
+  getOffset: ->
+    # Estimate which slide is nearest based on current window scroll position
+    @offset = parseInt(document.body.scrollTop/window.innerHeight)
 
-      # Whichever slide is more than half-revealed in the window prevails
-      @slide_offset++ if (document.body.scrollTop % window.innerHeight) > window.innerHeight/2
-
-      switch event.keyCode
-        when 39, 40 # right or down
-          @next()
-        when 37, 38 # left or up
-          @prev()
+    # Whichever slide is more than half-revealed in the window prevails
+    @offset++ if (document.body.scrollTop % window.innerHeight) > window.innerHeight/2
 
   next: ->
-    @slide_offset++ unless @slide_offset is (@slide_count-1)
+    @getOffset()
+    @offset++ unless @offset is @slide_count-1
     @animate()
 
   prev: ->
-    @slide_offset-- unless @slide_offset is 0
+    @getOffset()
+    @offset-- unless @offset is 0
     @animate()
 
   animate: ->
     $("html, body").animate
-      scrollTop: window.innerHeight*@slide_offset
+      scrollTop: window.innerHeight*@offset
 
 window.Carousel = Carousel
 
 $ ->
-  window.carousel = new Carousel('#slides > li')
+  window.carousel = new Carousel('#slides')
 
+  # setInterval("carousel.next()", 1000)

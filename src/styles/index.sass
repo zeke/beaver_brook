@@ -61,7 +61,7 @@ ol#slides
   margin: 0
   padding: 0
   list-style: none
-  +transition(0.5s)
+  //+transition(0.5s)
 
   > li
     margin: 0
@@ -97,7 +97,9 @@ ol#slides
         color: $image_border_color
       img
         +centered_right($desktop_slide_padding)
-        +max_scale(70%)
+        // +max_scale(70%)
+        max-height: 80%
+        max-width: 50%
         border: 10px solid $image_border_color
         &.borderless
           border-color: transparent
@@ -110,7 +112,8 @@ ol#slides
         color: $text_color
         font-weight: bold
         font-size: $desktop_text_size
-        max-width: 400px
+        // max-width: 400px
+        max-width: 40%
         +centered_left($desktop_slide_padding)
         +mobile-only
           +not_centered

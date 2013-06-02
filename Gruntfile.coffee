@@ -5,8 +5,8 @@ module.exports = (grunt) ->
     aws: grunt.file.readJSON("aws.json")
     s3:
       options:
-        key: "<%= aws.key %>"
-        secret: "<%= aws.secret %>"
+        key: "1NXMHSQFT0F16WRSJSR2"
+        secret: "1y7pu8AEueQkRhbWAUdjHxA+3sL/ppFnO5dMka7m"
         bucket: "beaver.zeke.sikelianos.com"
         access: "public-read"
 
