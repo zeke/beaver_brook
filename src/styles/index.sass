@@ -7,13 +7,17 @@ $image_border_color: white
 $link_color: #666
 $link_hover_color: #333
 
+$slide_num_padding: 10px
+$slide_num_font_size: 18px
+$slide_num_label_color: #BBB
+
 $desktop_slide_padding: 30px
 $desktop_heading_size: 80px
 $desktop_text_size: 32px
 
+$mobile_slide_padding: 20px
 $mobile_heading_size: 32px
 $mobile_text_size: 18px
-$mobile_slide_padding: 20px
 
 *
   -moz-box-sizing: border-box
@@ -58,12 +62,13 @@ h3.tip
     display: none
 
 ol#slides
+  counter-reset: slideNum
   margin: 0
   padding: 0
   list-style: none
-  //+transition(0.5s)
 
   > li
+    counter-increment: slideNum
     margin: 0
     padding: 0
     height: 100%
@@ -72,6 +77,18 @@ ol#slides
     +mobile-only
       width: auto
       height: auto
+
+    // slide number label
+    &:after
+      content: counter(slideNum)
+      position: absolute
+      top: $slide_num_padding
+      right: $slide_num_padding
+      display: "block"
+      font-size: $slide_num_font_size
+      color: $slide_num_label_color
+      display: none
+
 
     > h1
       +centered_left
@@ -97,7 +114,6 @@ ol#slides
         color: $image_border_color
       img
         +centered_right($desktop_slide_padding)
-        // +max_scale(70%)
         max-height: 80%
         max-width: 50%
         border: 10px solid $image_border_color
@@ -112,7 +128,6 @@ ol#slides
         color: $text_color
         font-weight: bold
         font-size: $desktop_text_size
-        // max-width: 400px
         max-width: 40%
         +centered_left($desktop_slide_padding)
         +mobile-only
@@ -127,5 +142,3 @@ ol#slides
           &:hover
             color: $link_hover_color
             text-decoration: underline
-
-
